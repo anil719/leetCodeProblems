@@ -1,39 +1,37 @@
 class Solution {
+
     public String minWindow(String s, String t) {
-        int n = s.length(), m = t.length();
-        int[] tFreq = new int[123];
-        int answer = Integer.MAX_VALUE;
-        for(char ch : t.toCharArray()){
-            tFreq[ch]++;
-        }
+       int answer = Integer.MAX_VALUE;
 
-        int start = 0, end = 0;
-        int startId= -1, endId = -1;
-        int[] sFreq = new int[123];
+       int[] freqTstring = new int[123];
+       for(char ch : t.toCharArray()) freqTstring[ch]++;
 
-        while(end < n){
-            char ch = s.charAt(end);
-            sFreq[ch]++;
-            end ++;
-            while(start < end && isValid(tFreq, sFreq)){
-                if(end-start < answer){
-                    answer = end-start;
-                    startId =start;
-                    endId = end;
-                }
-                sFreq[s.charAt(start)]--;
-                start++;
-            }
-        }
+       int start = 0, end = 0;
+       int startIdx = -1, endIdx = -1;
+       int n = s.length();
 
-        if(answer == Integer.MAX_VALUE) return "";
-        return s.substring(startId, endId);
+       int[] freqSstring = new int[123];
+       while(end < n){
+           char ch = s.charAt(end);
+           freqSstring[ch]++;
+           end ++;
+           while(start < end && validWindow(freqTstring, freqSstring)){
+               if(end-start < answer){
+                   answer = end-start;
+                   startIdx = start ;
+                   endIdx = end;
+               }
+               freqSstring[s.charAt(start)]--;
+               start ++;
+           }
+       }
+       if(answer == Integer.MAX_VALUE) return "";
+       return s.substring(startIdx, endIdx);
     }
 
-    public boolean isValid(int[] a, int[] b){
-
+    public boolean validWindow(int[] tfreq, int[] sfreq){
         for(int i = 0; i < 123; i++){
-            if(a[i] > b[i]) return false;
+            if(tfreq[i] > sfreq[i]) return false;
         }
         return true;
     }
