@@ -1,17 +1,15 @@
 class Solution {
-    public int maxArea(int[] height) {
-        int n = height.length;
+    public int maxArea(int[] arr) {
+       int n = arr.length;
 
-        int left = 0, right = n-1;
-        int res = Integer.MIN_VALUE;
-        while(left <= right){
-            int ht = Math.min(height[left], height[right]);
-            int currArea = (right-left) * ht;
-            res = Math.max(res, currArea);
-
-            if(height[left] < height[right]) left ++;
-            else right--;
-        }
-        return res;
+       int answer = 0;
+       int i = 0, j = n-1;
+       while(i <= j){
+           int currWater = (j-i)*(Math.min(arr[i], arr[j])) ;
+           answer = Math.max(answer, currWater);
+           if(arr[i] < arr[j]) i++;
+           else j--;
+       }
+       return answer;
     }
 }
