@@ -1,25 +1,28 @@
 class Solution {
-    // public String longestNiceSubstring(String s) {
-    //   int n = s.length();
-    //   if(n < 2) return "";
+    /*
+    public String longestNiceSubstring(String s) {
+        int n = s.length();
+        if(n < 2) return "";
 
-    //   HashSet<Character> set = new HashSet<>();
-    //   for(char ch : s.toCharArray()) set.add(ch);
+        HashSet<Character> set = new HashSet<>();
+        for(char ch : s.toCharArray()) set.add(ch);
 
-    //   for(int i =0; i < n; i++){
-    //       char ch = s.charAt(i);
+        for(int i =0; i < n; i++){
+            char ch = s.charAt(i);
 
-    //       char lc = Character.toLowerCase(ch);
-    //       char uc = Character.toUpperCase(ch);
-    //       if(set.contains(lc) && set.contains(uc)) continue;
+            char lc = Character.toLowerCase(ch);
+            char uc = Character.toUpperCase(ch);
+            if(set.contains(lc) && set.contains(uc)) continue;
 
-    //       String lp = longestNiceSubstring(s.substring(0, i));
-    //       String rp = longestNiceSubstring(s.substring(i+1));
-    //       String ans = lp.length() >= rp.length() ? lp : rp;
-    //       return ans;
-    //   }
-    //   return s;
-    // }
+            String lp = longestNiceSubstring(s.substring(0, i));
+            String rp = longestNiceSubstring(s.substring(i+1));
+            String ans = lp.length() >= rp.length() ? lp : rp;
+            return ans;
+        }
+        return s;
+    }
+
+    */
 
 
      public String longestNiceSubstring(String s) {
