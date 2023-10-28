@@ -39,10 +39,11 @@ class Solution {
         }
 
         // Create a list to store the unique elements
-        List<Integer> uniqueElements = new ArrayList<>(frequencyMap.keySet());
+        List<Integer> uniqueElements = new ArrayList<>();
+        for(int i : hm.keySet()) uniqueElements.add(i);
 
         // Sort the unique elements by their frequencies in descending order
-        Collections.sort(uniqueElements, (a, b) -> frequencyMap.get(b) - frequencyMap.get(a));
+        Collections.sort(uniqueElements, (a, b) -> Integer.compare(frequencyMap.get(b),frequencyMap.get(a)) );
 
         // Create the result array with the top k frequent elements
         int[] result = new int[k];
